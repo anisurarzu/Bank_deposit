@@ -3,11 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tangail_web_Bank</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>
-        Hello Customer
-    </h1>
+   
+
+    <div id="login-area">
+        <h1 class="text-center">
+            Welcome to Tangail_Web_Bank
+        </h1>
+        <br>
+        <br>
+        <div class="submit_area">
+            <h4>Login</h4>
+            <input type="text" class="form-control mb-3" placeholder="email">
+            <input type="password" class="form-control mb-3" placeholder="password">
+            <button id="login" class="btn btn-success mb-3">Enter</button>
+        </div>
+    </div>
+    <div id="transaction-area">
+       
+
+       <div class="row">
+           <div class="col-md-4">
+               <div class="deposit status">
+                <h5>Deposit</h5>
+                <h2>$ <span id="current-deposit">00</span>
+                </h2>
+               </div>
+           </div>
+           <div class="col-md-4 ">
+              <div class="withdraw status">
+                <h5>Withdraw</h5>
+                <h2>$00</h2>
+              </div>
+           </div>
+           <div class="col-md-4 ">
+               <div class="balance status">
+                <h5>Balance</h5>
+                <h2>$ <span id="current-balance">500</span></h2>
+               </div>
+           </div>
+       </div>
+       <div class="row mt-5">
+        <div class="col-md-6">
+           <div class="submit_area">
+            <h4>Deposit</h4>
+            <br>
+            <input id="deposit-amount" type="text"class="form-control" placeholder="$ amount you want to deposit">
+            <br>
+            <button id="add-deposit" class="btn btn-success">Deposit</button>
+           </div>
+        </div>
+        <div class="col-md-6">
+         <div class="submit_area">
+            <h4>Withdraw</h4>
+            <br>
+            <input type="text "class="form-control"placeholder="$ amount you want to withdraw">
+            <br>
+            <button class="btn btn-success">Withdraw</button>
+         </div>
+        </div>
+    </div>
+    </div>
+
+  
+
+
+
+
+    <script>
+        //login button event handler
+        const loginBtn=document.getElementById('login');
+        loginBtn.addEventListener("click",function(){
+            const loginArea=document.getElementById('login-area');
+            loginArea.style.display="none";
+            const transactionArea=document.getElementById('transaction-area');
+            transactionArea.style.display="block";
+        })
+
+        //deposit button event handler
+
+        const depositBtn=document.getElementById('add-deposit');
+        depositBtn.addEventListener('click',function(){
+            const depositAmount=document.getElementById('deposit-amount').value;
+            const depositNumber=parseFloat(depositAmount);
+            const currentDeposit=document.getElementById('current-deposit').innerText;
+            const currentDepositNumber=parseFloat(currentDeposit)
+            const totalDeposit = depositNumber + currentDepositNumber;
+            console.log(totalDeposit);
+
+            document.getElementById('current-deposit').innerText=totalDeposit;
+            
+
+            const currentBalance=document.getElementById('current-balance').innerText;
+           
+            const currentBalanceNumber=parseFloat(currentBalance);
+            const totalBalance= depositNumber + currentBalanceNumber;
+            document.getElementById('current-balance').innerText=totalBalance;
+            document.getElementById('deposit-amount').value="";
+            
+            
+
+           
+        })
+
+       
+
+        
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 </html>
